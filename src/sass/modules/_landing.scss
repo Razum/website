@@ -1,0 +1,454 @@
+.wrapper {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 6rem;
+  background-color: $alabaster;
+}
+
+
+.header-wrapper {
+  background-color: $white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  height: 8rem;
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include align-items(center);
+
+}
+
+.my-name {
+  font-size: 2.3rem;
+  text-transform: uppercase;
+}
+
+.my-position {
+  font-size: 1.4rem;
+  margin-top: -.5rem;
+}
+
+.header-social {
+  @extend %reset-list;
+
+  li {
+    display: inline-block;
+    margin-left: .3rem;
+  }
+  .social-link {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    border: 1px solid $silverchalice;
+    color: $silverchalice;
+    background-color: $white;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    overflow: hidden;
+    @include transition(all .3s ease);
+
+    i {
+      display: inline-block;
+    }
+    &.gmail {
+      font-size: 1.4rem;
+      i {
+        margin-left: -0.3rem;
+      }
+    }
+     &.linkedin {
+      font-size: 1.4rem;
+    }
+  }
+
+
+  .social-link:hover {
+    border-color: transparent;
+    color: $white;
+    &.xing {
+      background-color: $xing-green;
+    }
+
+    &.angellist {
+      color: $black;
+      border-color: $black;
+    }
+
+    &.github {
+      background-color: $git-brown;
+    }
+
+    &.gmail {
+      color: $gmail-red;
+      border-color: $gmail-red;
+    }
+    &.viadeo {
+      background-color: $viadeo-grey;
+    }
+
+    &.linkedin {
+      background-color: $linkedin-blue;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.landing-content {
+  padding: 5rem 0;
+}
+
+.flipper {
+  transform-style: preserve-3d;
+  @include transition(transform 1s ease);
+}
+
+.flipper.active {
+  @include transform(rotateY(180deg));
+
+  .page-item {
+    box-shadow: none;
+  }
+
+  .page-content {}
+  .page-content-overlay {
+    @include transform(scale(50));
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+.page-content-overlay {
+  z-index: 4;
+  opacity: 0;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 50%;
+  @include transition(transform 1s ease .7s, opacity 0s ease .6s );
+  @include transform(translate3d(0px, 0px, 0px) translate(-50%, -50%));
+}
+
+.page-content {
+  @include transform(rotateY(180deg) translate3d(0px, 0px, 0px));
+  @include backface-visibility(hidden);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $alabaster;
+  z-index: 4;
+}
+
+.pages-list {
+  @include backface-visibility(hidden);
+  z-index:6;
+  position: relative;
+  @include transform(translate3d(0px, 0px, 0px));
+}
+
+.pages-list {
+  @extend %reset-list;
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+
+
+}
+
+
+
+.page-item {
+  width: 100%;
+  height: 22.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  @include transition(all .5s ease);
+
+  @include breakpoint(large) {
+    width: 49%;
+    &:hover {
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
+      @include transform(scale(1.05));
+
+      .page-title {
+        @include transform(translateY(0));
+      }
+
+      .learn-more {
+        @include transform(translateY(0));
+        opacity: 1;
+      }
+
+    }
+  }
+
+  .page-item-link:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 45%;
+    z-index: 1;
+    opacity: .3;
+    background-repeat: no-repeat;
+  }
+
+
+  &.about {
+    background-color: $deluge;
+    .page-item-link:after {
+      background-image: url("../svg/about.svg");
+      background-size: cover;
+      background-position: 0 50%;
+
+    }
+  }
+  &.skills {
+    background-color: $mountainmeadow;
+    .page-item-link:after {
+      width: 50%;
+      background-image: url("../svg/skills.svg");
+      background-size: 140%;
+      background-position: 0 50%;
+    }
+
+    @include breakpoint(medium) {
+      &:after {
+        background-size: 120%;
+        background-position: 0 50%;
+      }
+    }
+  }
+
+  &.experience, &.projects {
+    .page-item-body {
+      padding-left: 50%;
+    }
+  }
+
+  &.experience {
+    background-color: $fiord;
+    .page-item-link:after {
+      left: 0;
+      width: 50%;
+      background-image: url("../svg/experience.svg");
+      background-size: 130%;
+      background-position: 135% 50%;
+    }
+
+    @include breakpoint(medium) {
+      .page-item-link:after {
+        background-size: 85%;
+        background-position: -30% 50%;
+      }
+    }
+  }
+  &.projects {
+    background-color: $burntsienna;
+    .page-item-link:after {
+      left: 0;
+      width: 50%;
+      background-image: url("../svg/projects.svg");
+      background-size: 170%;
+      background-position: 120% 50%;
+    }
+    @include breakpoint(medium) {
+      .page-item-link:after {
+        background-size: 130% auto;
+        background-position: 120% 50%;
+      }
+    }
+  }
+}
+
+.page-item-link {
+  display: table;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  padding: 2rem;
+  position: relative;
+}
+
+
+.page-item-body {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.page-title, .learn-more {
+  color: $white;
+  font-weight: 300;
+  @include transition(all .5s ease);
+}
+
+.page-title {
+  margin: 0 0 .5rem;
+  font-size: 1.7rem;
+
+  @include breakpoint(medium) {
+    font-size: 2.4rem;
+  }
+
+  @include breakpoint(large) {
+    @include transform(translateY(1.8rem));
+  }
+}
+
+.learn-more {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0.5rem .7rem;
+  text-decoration: none;
+  border: 2px solid $white;
+  border-radius: .7rem;
+  @include breakpoint(large) {
+    @include transform(translateY(180%));
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+  height: 6rem;
+  margin-top: -6rem;
+  background-color: $gallery;
+  position: relative;
+}
+
+.footer-content {
+  height: 100%;
+  @extend %flexbox;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+.copyright {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, .45);
+  span {
+    text-transform: uppercase;
+  }
+}
+
+.footer-social {
+  @extend %reset-list;
+  li {
+    display: inline-block;
+  }
+  .social-link {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid $silverchalice;
+    color: $gallery;
+    background-color: $silverchalice;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    overflow: hidden;
+    @include transition(all .3s ease);
+    margin-left: .3rem;
+
+    i {
+      display: inline-block;
+    }
+    &.xing {
+      i {
+        margin-left: -0.1rem;
+      }
+    }
+
+    &.angellist {
+      i {
+        margin-left: -0.1rem;
+      }
+    }
+
+    &.github {
+      i {
+        margin-left: -.1rem;
+      }
+    }
+
+    &.gmail {
+      font-size: 1.1rem;
+      i {
+        margin-left: -0.2rem;
+      }
+    }
+  }
+
+
+  .social-link:hover {
+    border-color: transparent;
+    color: $white;
+    &.xing {
+      background: $xing-green;
+    }
+
+    &.angellist {
+      color: $black;
+      border-color: $black;
+      background-color: $gallery;
+    }
+
+    &.github {
+      background-color: $git-brown;
+    }
+
+    &.gmail {
+      color: $gmail-red;
+      border-color: $gmail-red;
+      background-color: $gallery;
+    }
+    &.viadeo {
+      background-color: $viadeo-grey;
+    }
+
+    &.linkedin {
+      background-color: $linkedin-blue;
+    }
+  }
+}

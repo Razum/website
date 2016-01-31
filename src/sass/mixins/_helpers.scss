@@ -1,0 +1,23 @@
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin breakpoint($point) {
+  @if $point == medium {
+    @media (min-width: 768px)  { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: 1024px) { @content; }
+  }
+  @else if $point == wide {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point { // allows custom breakpoints
+    @media (min-width: $point) { @content; }
+  }
+}

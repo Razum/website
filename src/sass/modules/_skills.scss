@@ -1,0 +1,104 @@
+.skills {
+  .page-close {
+    &:before, &:after {
+      background-color: $mountainmeadow;
+    }
+  }
+  .page-header {
+    color: $mountainmeadow;
+  }
+}
+
+.skill-categories {
+  margin-bottom: 3rem;
+  @extend %reset-list;
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+}
+.skill-category {
+  position: relative;
+  width: 15rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+
+  a {
+    display: block;
+    font-size: 1.8rem;
+    border-radius: 3px;
+    text-decoration: none;
+    line-height: 5rem;
+    text-align: center;
+    height: 100%;
+  }
+  &.show-all a {
+    background-color: $alabaster;
+    color: $fiord;
+    box-shadow: 1px 2px 3px rgba($regentgray, .4);
+  }
+  &.frontend a {
+    background-color: $froly;
+    color: $white;
+    box-shadow: 1px 2px 3px rgba($regentgray, .4);
+  }
+  &.backend a {
+    background-color: $shakespeare;
+    color: $white;
+    box-shadow: 1px 2px 3px rgba($regentgray, .4);
+  }
+  &.other a {
+    background-color: $cucumber;
+    color: $white;
+    box-shadow: 1px 2px 3px rgba($regentgray, .4);
+  }
+
+  &.active {
+    box-shadow: 1px 4px 6px rgba($regentgray, .7);
+  }
+}
+
+.skill-list {
+  @extend %reset-list;
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 13rem;
+  height: 5rem;
+  a {
+    display: block;
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    height: 100%;
+    line-height: 5rem;
+    background-color: $alabaster;
+    color: $fiord;
+    box-shadow: 1px 2px 3px rgba($regentgray, .4);
+    overflow: hidden;
+    @include transition(all .3s ease);
+  }
+}
+
+.skill-list.frontend .skill-item.frontend a {
+  background-color: $froly;
+  color: $white;
+}
+.skill-list.backend .skill-item.backend a {
+  background-color: $shakespeare;
+  color: $white;
+}
+.skill-list.other .skill-item.other a {
+  background-color: $cucumber;
+  color: $white;
+}

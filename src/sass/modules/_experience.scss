@@ -1,0 +1,187 @@
+.experience {
+  .page-close {
+    &:before, &:after {
+      background-color: $black;
+    }
+  }
+  .page-header {
+    color: $black;
+  }
+}
+
+.timeline {
+  border-left: 3px solid $mystic;
+  margin-left: 5rem;
+}
+
+.timeline-year {
+  position: relative;
+  padding-left: 2.5rem;
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    @include transform(translateY(-50%));
+    z-index: 10;
+  }
+  &:before {
+    width: 19px;
+    height: 19px;
+    border: 2px solid $mystic;
+    left: -11px;
+    background: $white;
+  }
+  &:after {
+    width: 11px;
+    height: 11px;
+    left: -7px;
+  }
+  &.present {
+    color: $froly;
+    &:after {
+      background: $froly;
+    }
+  }
+}
+
+.timeline-company {
+  position: relative;
+  padding-left: 2.5rem;
+  height: 40px;
+  line-height: 40px;
+  color: $regentgray;
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    @include transform(translateY(-50%));
+    z-index: 10;
+  }
+  &:before {
+    width: 42px;
+    height: 42px;
+    left: -22px;
+    background: $gallery;
+
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &.provectus:before {
+    background-image: url("/assets/img/provectus.png");
+  }
+  &.ciklum:before {
+    background-image: url("/assets/img/ciklum.png");
+  }
+  &.abp:before {
+    background-size: 80%;
+    background-image: url("/assets/img/abp.png");
+  }
+  &.onu:before {
+    background-image: url("/assets/img/onu.png");
+  }
+
+}
+
+.timeline-project {
+  height: 7rem;
+  width: 30rem;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 1px 2px 5px $gallery;
+  margin: 1rem 3rem;
+
+  &.gracenote .timeline-projects-logo {
+    background-color: $alabaster;
+    background-image: url("/assets/img/projects/Gracenote_logo.png");
+  }
+  &.ticketmaster .timeline-projects-logo {
+    background-color: #009CDE;
+    background-image: url("/assets/img/projects/ticketmaster.png");
+  }
+  &.livenation .timeline-projects-logo {
+    background-color: #D10925;
+    background-image: url("/assets/img/projects/livenation.png");
+  }
+
+  &.pressfire .timeline-projects-logo {
+    background-color: #424242;
+    background-size: 85%;
+    background-position: center center;
+    background-image: url("/assets/img/projects/pressfire.png");
+  }
+  &.dbtv .timeline-projects-logo {
+    background-color: $white;
+    background-size: 85%;
+    background-position: center center;
+    background-image: url("/assets/img/projects/dbtv.png");
+  }
+  &.pediaq .timeline-projects-logo {
+    background-color: #2FC1D4;
+    background-image: url("/assets/img/projects/pediaq.png");
+  }
+  &.shtrafy .timeline-projects-logo {
+    background-color: $black;
+    background-image: url("/assets/img/projects/shtrafy.png");
+  }
+  &.pixo .timeline-projects-logo {
+    background-color: #54C4C1;
+    background-image: url("/assets/img/projects/pixo.png");
+  }
+
+  &.startuphealth .timeline-projects-logo {
+    background-color: #1380AE;
+    background-image: url("/assets/img/projects/startuphealth.png");
+  }
+  &.nils .timeline-projects-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/nils.png");
+  }
+
+  &.blownaway .timeline-projects-logo {
+    background-color: $black;
+    background-image: url("/assets/img/projects/blownaway.png");
+  }
+  &.databeatomni .timeline-projects-logo {
+    background-size: 90%;
+    background-position: center center;
+    background-color: $white;
+    background-image: url("/assets/img/projects/databeatomni.png");
+  }
+  &.rds .timeline-projects-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/rds_bar.png");
+  }
+  &.rds .timeline-projects-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/rds_bar.png");
+  }
+  &.onu-website .timeline-projects-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/onu.png");
+  }
+  &.info-website .timeline-projects-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/info_onu.png");
+  }
+}
+
+.timeline-projects-logo {
+  width: 7rem;
+  float: left;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.timeline-projects-title {
+  height: 100%;
+  line-height: 7rem;
+  padding-left: 8rem;
+}
