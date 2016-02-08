@@ -6,8 +6,10 @@ import Router from './router.js';
 
 "use strict";
 
-console.info(new Router());
-var router = new Router({root: "/", mode: "history"})
+
+
+//router.navigate('/about');
+
 /*
  if (__DEV__) {
  console.log("DEV");
@@ -16,35 +18,63 @@ var router = new Router({root: "/", mode: "history"})
 document.addEventListener("DOMContentLoaded", function(event) {
     var wrapper = document.getElementById("wrapper");
     var folding_panel = document.getElementById("folding-panel");
-    var fold_content = document.getElementById("fold-content");
-    var overlay = document.getElementById("page-overlay");
-    var page_content = document.getElementById("page-content");
-
+    var body = document.querySelector("body");
+    var page_wrapper = document.getElementById("page-content-wrapper");
     var current_page = "";
+    var router = new Router({mode: "hash"});
 
-    wrapper.addEventListener("click", function (evt) {
-        evt.preventDefault();
-        var target = evt.target,
-            href = "";
+    router
+        .add(/(.*)/, function(page) {
+            console.log(page);
+            var mq = window.matchMedia( "(min-width: 1024px)" );
 
-        while (target.tagName != "BODY") {
-            if (target.tagName === "A" && target.classList.contains("page-item-link")) {
-
-                var mq = window.matchMedia( "(min-width: 1024px)" );
-                href = target.getAttribute('href');
-                current_page = href.slice(0, -5);
+            if (page && ['about', 'skills', 'experience', 'projects'].some((name)=>page === name)) {
+                current_page = page;
                 if (mq.matches) {
-                    document.querySelector("body").classList.add("page-is-shown");
-                    openItemInfo(href, "page-content");
-                    page_content.classList.add(current_page);
+                    body.classList.add("page-is-shown");
+                    openItemInfo(page, "page-content");
+                    page_wrapper.classList.add(current_page);
                 } else {
                     wrapper.classList.add('fold-is-open');
                     folding_panel.classList.add('is-open', current_page);
-                    openItemInfo(href, "fold-content");
+                    openItemInfo(page, "fold-content");
                 }
+            }
+        })
+        .check()
+        .listen();
 
 
 
+
+    body.addEventListener("click", function (evt) {
+        var target = evt.target;
+        if (target.tagName === "A" && target.classList.contains("page-close") ) {
+            wrapper.classList.remove('fold-is-open');
+            folding_panel.classList.remove('is-open', current_page);
+
+            page_wrapper.classList.remove(current_page);
+            body.classList.remove("page-is-shown");
+            router.navigate("");
+        }
+
+        if (target.tagName === "DIV" && target.classList.contains("page-content-overlay")) {
+            body.classList.remove("page-is-shown");
+            page_wrapper.classList.remove(current_page);
+            router.navigate("");
+        }
+
+
+        while (target.tagName != "BODY") {
+            if (target.tagName === "LI" && target.classList.contains("skill-category")) {
+                evt.preventDefault();
+                [].forEach.call(document.querySelectorAll('.skill-category'), function (elm) {
+                    elm.classList.remove("active")
+                });
+                target.classList.add("active");
+
+                var category = target.dataset.category;
+                document.getElementById("skill-list").setAttribute("class", "skill-list " + category);
                 break;
             } else {
                 target = target.parentNode;
@@ -55,15 +85,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-    var close_btn = document.getElementById("cd-close");
-    close_btn.addEventListener("click", function () {
-        wrapper.classList.remove('fold-is-open');
-        folding_panel.classList.remove('is-open', current_page);
-    }, false);
 
-    function openItemInfo(url, id) {
+    function openItemInfo(pageName, id) {
+        console.warn(pageName);
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
+        xhr.open('GET', pageName + ".html", true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -73,54 +99,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    overlay.addEventListener("click", function (evt) {
-        var target = evt.target;
-        if (target.tagName === "DIV" && target.classList.contains("page-content-overlay")) {
-            document.querySelector("body").classList.remove("page-is-shown");
-            page_content.classList.remove(current_page);
-        }
-
-    }, false);
-
-
-
-    folding_panel.addEventListener("click", function (evt) {
-        evt.preventDefault();
-        var target = evt.target;
-        while (target.tagName != "BODY") {
-            if (target.tagName === "LI" && target.classList.contains("skill-category")) {
-                [].forEach.call(document.querySelectorAll('.skill-category'), function (elm) {
-                    elm.classList.remove("active")
-                });
-                target.classList.add("active");
-
-                var category = target.dataset.category;
-                document.getElementById("skill-list").setAttribute("class", "skill-list " + category);
-
-                break;
-            } else {
-                target = target.parentNode;
-            }
-        }
-    }, false);
-    page_content.addEventListener("click", function (evt) {
-        evt.preventDefault();
-        var target = evt.target;
-        while (target.tagName != "BODY") {
-            if (target.tagName === "LI" && target.classList.contains("skill-category")) {
-                [].forEach.call(document.querySelectorAll('.skill-category'), function (elm) {
-                    elm.classList.remove("active")
-                });
-                target.classList.add("active");
-
-                var category = target.dataset.category;
-                document.getElementById("skill-list").setAttribute("class", "skill-list " + category);
-
-                break;
-            } else {
-                target = target.parentNode;
-            }
-        }
-    }, false);
 
 });

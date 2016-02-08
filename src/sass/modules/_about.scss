@@ -6,6 +6,7 @@
   }
   .page-header {
     color: $mountainmeadow;
+    @include transition(color 0s 2s);
   }
 }
 
