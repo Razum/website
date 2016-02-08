@@ -1,0 +1,254 @@
+.projects {
+  .page-close {
+    &:before, &:after {
+      background-color: $burntsienna;
+    }
+  }
+  .page-header {
+    color: $burntsienna;
+  }
+}
+
+.project-item {
+  border-radius: 5px;
+  overflow: hidden;
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include transition(all .4s ease-in);
+  box-shadow: 3px 3px 3px $gallery;
+  margin-bottom: 2rem;
+
+  &:hover{
+    box-shadow: 3px 3px 10px $regentgray;
+    .project-item-body {
+      background-color: $gallery;
+    }
+    .project-item-technology {
+      background-color: $alto;
+    }
+  }
+}
+
+.project-item-body {
+  flex: 3;
+  @include transition(all .3s ease-in);
+}
+
+
+.project-item-title {
+  font-size: 2.4rem;
+  color: $fiord;
+  padding: 2.5rem;
+}
+
+.project-field-lbl {
+  font-size: 1.3rem;
+  margin: 0;
+  color: $fiord;
+}
+
+.project-item-data {
+  @extend %flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  border-bottom: 1px solid $gallery;
+  border-top: 1px solid $gallery;
+  font-size: 1.5rem;
+  padding: 2rem 2.5rem;
+  div {
+    font-weight: 600;
+  }
+}
+
+.project-item-period {
+  flex: 1.5;
+}
+.project-item-company {
+  flex: 1;
+}
+
+.project-item-client {
+  flex: 1;
+}
+
+
+.project-item-technologies {
+  @extend %reset-list;
+  padding: 2rem 2.5rem;
+
+}
+
+.project-item-technology {
+  background-color: $gallery;
+  border-radius: 5px;
+  color: $fiord;
+  font-size: 1.3rem;
+  padding: 1.1rem 1.3rem;
+  display: inline-block;
+  margin-right: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  @include transition(all .3s ease-in);
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.project-item-logo {
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  flex: 1;
+}
+
+.project-item {
+  &.pixo .project-item-logo {
+    background-color: #54C4C1;
+    background-image: url("/assets/img/projects/pixo.png");
+  }
+  &.gracenote .project-item-logo {
+    background-color: $alabaster;
+    background-image: url("/assets/img/projects/gracenote.png");
+  }
+  &.pediaq .project-item-logo {
+    background-color: #2FC1D4;
+    background-image: url("/assets/img/projects/pediaq.png");
+  }
+  &.dbtv .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/dbtv.png");
+  }
+  &.pressfire .project-item-logo {
+    background-color: #424242;
+    background-image: url("/assets/img/projects/pressfire.png");
+  }
+  &.shtrafy .project-item-logo {
+    background-color: $black;
+    background-image: url("/assets/img/projects/shtrafy.png");
+  }
+  &.startuphealth .project-item-logo {
+    background-color: #1380AE;
+    background-image: url("/assets/img/projects/startuphealth.png");
+  }
+  &.nils .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/nils.png");
+  }
+  &.databeatomni .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/nils.png");
+  }
+  &.rds .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/rds_bar.png");
+  }
+  &.onu-website .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/onu.png");
+  }
+  &.info-website .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/info_onu.png");
+  }
+  &.blownaway .project-item-logo {
+    background-color: $black;
+    background-image: url("/assets/img/projects/blownaway.png");
+  }
+  &.ticketmaster .project-item-logo {
+    background-color: #009CDE;
+    background-image: url("/assets/img/projects/ticketmaster.png");
+  }
+  &.livenation .project-item-logo {
+    background-color: #D10925;
+    background-image: url("/assets/img/projects/livenation.png");
+  }
+  &.ontestme .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/ontestme.png");
+  }
+}
+
+.project-details-page {
+  background-color: $white;
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 1rem 3rem 1rem 7rem;
+  @extend %flexbox;
+  @include flex-direction(row);
+}
+
+.project-logo-wrapper {
+  flex: 1;
+}
+
+.project-details {
+  flex: 3;
+}
+.project-logo {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+
+  &.pixo {
+    background-color: #54C4C1;
+    background-image: url("/assets/img/projects/pixo.png");
+  }
+}
+
+.project-title {
+  margin: 0;
+}
+
+.project-technologies {
+  @extend %reset-list;
+  padding: 2rem 0;
+
+}
+
+.project-technology {
+  background-color: $gallery;
+  border-radius: 5px;
+  color: $fiord;
+  font-size: 1.3rem;
+  padding: 1.1rem 1.3rem;
+  display: inline-block;
+  margin-right: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  @include transition(all .3s ease-in);
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.project-responsobilities {
+  border-bottom: 1px solid $gallery;
+  border-top: 1px solid $gallery;
+  margin: 0;
+
+}
+
+.project-responsobilities-list {
+  padding-left: 1.6rem;
+}
+
+
+.back-arrow {
+  display: inline-block;
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  font-size: 3rem;
+  height: 2rem;
+  color: $burntsienna;
+}
+

@@ -17,7 +17,6 @@
   @include flex-direction(row);
   @include justify-content(space-between);
   @include align-items(center);
-
 }
 
 .my-name {
@@ -103,66 +102,42 @@
 
 
 
-
-
-
-
 .landing-content {
   padding: 5rem 0;
 }
 
-.flipper {
-  transform-style: preserve-3d;
-  @include transition(transform 1s ease);
-}
-
-.flipper.active {
-  @include transform(rotateY(180deg));
-
-  .page-item {
-    box-shadow: none;
-  }
-
-  .page-content {}
-  .page-content-overlay {
-    @include transform(scale(50));
-    position: fixed;
-    opacity: 1;
-  }
-}
-
 .page-content-overlay {
-  z-index: 4;
-  opacity: 0;
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: rgba(0, 0, 0, .7);
-  border-radius: 50%;
-  @include transition(transform 1s ease .7s, opacity 0s ease .6s );
-  @include transform(translate3d(0px, 0px, 0px) translate(-50%, -50%));
-}
-
-.page-content {
-  @include transform(rotateY(180deg) translate3d(0px, 0px, 0px));
-  @include backface-visibility(hidden);
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, .7);
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all .5s ease);
+  overflow: hidden;
+}
+.page-content {
+  background-color: rgba(255, 255, 255, 1);
   height: 100%;
-  background-color: $alabaster;
-  z-index: 4;
+  padding: 1rem 2rem 4rem;
+  @include transform(translateY(100%));
+  @include transition(transform .5s ease);
 }
 
-.pages-list {
-  @include backface-visibility(hidden);
-  z-index:6;
-  position: relative;
-  @include transform(translate3d(0px, 0px, 0px));
+.page-is-shown {
+  .page-content-overlay {
+    opacity: 1;
+    visibility: visible;
+    @include transition(all .5s ease);
+  }
+  .page-content {
+    @include transform(translateY(0));
+    @include transition(transform .5s ease);
+  }
 }
+
+
 
 .pages-list {
   @extend %reset-list;
@@ -171,10 +146,7 @@
   @include justify-content(space-between);
   @include flex-wrap(wrap);
   @include align-items(center);
-
-
 }
-
 
 
 .page-item {
@@ -331,124 +303,5 @@
   @include breakpoint(large) {
     @include transform(translateY(180%));
     opacity: 0;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-footer {
-  height: 6rem;
-  margin-top: -6rem;
-  background-color: $gallery;
-  position: relative;
-}
-
-.footer-content {
-  height: 100%;
-  @extend %flexbox;
-  @include flex-direction(column);
-  @include justify-content(center);
-  @include align-items(center);
-}
-
-.copyright {
-  text-align: center;
-  font-size: 1.2rem;
-  color: rgba(0, 0, 0, .45);
-  span {
-    text-transform: uppercase;
-  }
-}
-
-.footer-social {
-  @extend %reset-list;
-  li {
-    display: inline-block;
-  }
-  .social-link {
-    display: block;
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    border: 1px solid $silverchalice;
-    color: $gallery;
-    background-color: $silverchalice;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 2.2rem;
-    overflow: hidden;
-    @include transition(all .3s ease);
-    margin-left: .3rem;
-
-    i {
-      display: inline-block;
-    }
-    &.xing {
-      i {
-        margin-left: -0.1rem;
-      }
-    }
-
-    &.angellist {
-      i {
-        margin-left: -0.1rem;
-      }
-    }
-
-    &.github {
-      i {
-        margin-left: -.1rem;
-      }
-    }
-
-    &.gmail {
-      font-size: 1.1rem;
-      i {
-        margin-left: -0.2rem;
-      }
-    }
-  }
-
-
-  .social-link:hover {
-    border-color: transparent;
-    color: $white;
-    &.xing {
-      background: $xing-green;
-    }
-
-    &.angellist {
-      color: $black;
-      border-color: $black;
-      background-color: $gallery;
-    }
-
-    &.github {
-      background-color: $git-brown;
-    }
-
-    &.gmail {
-      color: $gmail-red;
-      border-color: $gmail-red;
-      background-color: $gallery;
-    }
-    &.viadeo {
-      background-color: $viadeo-grey;
-    }
-
-    &.linkedin {
-      background-color: $linkedin-blue;
-    }
   }
 }

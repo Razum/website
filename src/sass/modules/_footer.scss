@@ -1,0 +1,105 @@
+footer {
+  height: 6rem;
+  margin-top: -6rem;
+  background-color: $gallery;
+  position: relative;
+}
+
+.footer-content {
+  height: 100%;
+  @extend %flexbox;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+.copyright {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, .45);
+  span {
+    text-transform: uppercase;
+  }
+}
+
+.footer-social {
+  @extend %reset-list;
+  li {
+    display: inline-block;
+  }
+  .social-link {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid $silverchalice;
+    color: $gallery;
+    background-color: $silverchalice;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    overflow: hidden;
+    @include transition(all .3s ease);
+    margin-left: .3rem;
+
+    i {
+      display: inline-block;
+    }
+    &.xing {
+      i {
+        margin-left: -0.1rem;
+      }
+    }
+
+    &.angellist {
+      i {
+        margin-left: -0.1rem;
+      }
+    }
+
+    &.github {
+      i {
+        margin-left: -.1rem;
+      }
+    }
+
+    &.gmail {
+      font-size: 1.1rem;
+      i {
+        margin-left: -0.2rem;
+      }
+    }
+  }
+
+
+  .social-link:hover {
+    border-color: transparent;
+    color: $white;
+    &.xing {
+      background: $xing-green;
+    }
+
+    &.angellist {
+      color: $black;
+      border-color: $black;
+      background-color: $gallery;
+    }
+
+    &.github {
+      background-color: $git-brown;
+    }
+
+    &.gmail {
+      color: $gmail-red;
+      border-color: $gmail-red;
+      background-color: $gallery;
+    }
+    &.viadeo {
+      background-color: $viadeo-grey;
+    }
+
+    &.linkedin {
+      background-color: $linkedin-blue;
+    }
+  }
+}
