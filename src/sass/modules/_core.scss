@@ -21,8 +21,8 @@ body {
   font-size: 1.4rem;
   height: 100%;
   line-height: 1.42857143;
-  color: #333;
-  background: #333;
+  color: $mineshaft;
+  background: $mineshaft;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -118,8 +118,8 @@ body {
   position: absolute;
   z-index: 5;
   display: inline-block;
-  top: 10px;
-  right: 10px;
+  top: 2.5rem;
+  right: 2.5rem;
   height: 2rem;
   width: 2rem;
 
@@ -160,7 +160,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  padding: 1rem 2rem 4rem;
+  padding: 2.5rem 2rem 4rem;
 
   visibility: hidden;
   @include transition(visibility 0s .5s);
@@ -170,16 +170,6 @@ body {
     -webkit-overflow-scrolling: touch;
     visibility: visible;
     @include transition(visibility 0s .5s);
-  }
-}
-
-
-
-
-.page-is-shown {
-  .page-close {
-    opacity: 1;
-    @include transition(opacity .2s .5s);
   }
 }
 
@@ -210,7 +200,7 @@ body {
   color: $fiord;
   font-size: 1.6rem;
   @include breakpoint(medium) {
-    padding: 0 10rem;
+    padding: 0 8rem;
   }
 }
 

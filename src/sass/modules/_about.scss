@@ -1,12 +1,11 @@
 .about {
   .page-close {
     &:before, &:after {
-      background-color: $mountainmeadow;
+      background-color: $deluge;
     }
   }
   .page-header {
-    color: $mountainmeadow;
-    @include transition(color 0s 2s);
+    color: $deluge;
   }
 }
 

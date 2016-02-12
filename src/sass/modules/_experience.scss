@@ -1,11 +1,11 @@
 .experience {
   .page-close {
     &:before, &:after {
-      background-color: $black;
+      background-color: $fiord;
     }
   }
   .page-header {
-    color: $black;
+    color: $fiord;
   }
 }
 
@@ -17,6 +17,11 @@
 .timeline-year {
   position: relative;
   padding-left: 2.5rem;
+  margin: 3rem 0;
+  &:first-child {
+    top: -1rem;
+  }
+
   &:before, &:after {
     content: "";
     display: block;
@@ -44,11 +49,52 @@
       background: $froly;
     }
   }
+  &.year-2010 {
+    color: $mineshaft;
+    &:after {
+      background: $mineshaft;
+    }
+  }
+
+  &.year-2011 {
+    color: $deluge;
+    &:after {
+      background: $deluge;
+    }
+  }
+
+  &.year-2012 {
+    color: $mountainmeadow;
+    &:after {
+      background: $mountainmeadow;
+    }
+  }
+
+  &.year-2013 {
+    color: $shakespeare;
+    &:after {
+      background: $shakespeare;
+    }
+  }
+
+  &.year-2014 {
+    color: $cucumber;
+    &:after {
+      background: $cucumber;
+    }
+  }
+
+  &.year-2015 {
+    color: $fiord;
+    &:after {
+      background: $fiord;
+    }
+  }
 }
 
 .timeline-company {
   position: relative;
-  padding-left: 2.5rem;
+  padding-left: 4.5rem;
   height: 40px;
   line-height: 40px;
   color: $regentgray;
@@ -65,7 +111,7 @@
     width: 42px;
     height: 42px;
     left: -22px;
-    background: $gallery;
+    background-color: $gallery;
 
     background-size: 70%;
     background-repeat: no-repeat;
@@ -86,6 +132,40 @@
     background-image: url("/assets/img/onu.png");
   }
 
+  .timeline-company-line {
+    display: none;
+    position: absolute;
+    top: 50%;
+    width: 2.3rem;
+    height: 2px;
+    background-color: $mystic;
+    left: -36px;
+
+    &:before {
+      background-color: $mystic;
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      top: 50%;
+      @include transform(translateY(-50%));
+      z-index: 10;
+      width: 13px;
+      height: 13px;
+      right: -18px;
+    }
+  }
+
+  @include breakpoint(medium) {
+    padding-left: 2.5rem;
+    &:before {
+      left: -84px;
+    }
+    .timeline-company-line {
+      display: block;
+    }
+  }
+
 }
 
 .timeline-project {
@@ -93,8 +173,15 @@
   width: 30rem;
   border-radius: 3px;
   overflow: hidden;
-  box-shadow: 1px 2px 5px $gallery;
+  box-shadow: 1px 2px 4px $alto;
   margin: 1rem 3rem;
+  cursor: pointer;
+  @include transition(all .3s ease-in);
+
+  &:hover {
+    background-color: $gallery;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, .5);
+  }
 
   &.gracenote .timeline-projects-logo {
     background-color: $alabaster;
