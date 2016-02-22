@@ -1,0 +1,47 @@
+.ss-wrapper {
+  overflow-y : hidden;
+  height   : 100%;
+  width: 100%;
+  position : relative;
+  z-index  : 1;
+  float: left;
+}
+
+.ss-content {
+  height          : 100%;
+  width           : calc(100% + 18px);
+  padding         : 0 32px 0 0;
+  position        : relative;
+  right           : -18px;
+  overflow        : auto;
+  left: 0;
+}
+
+.ss-scroll {
+  position            : absolute;
+  right: 1.3rem;
+  background          : $regentgray;
+  width               : 3px;
+  border-radius       : 4px;
+  top                 : 0;
+  z-index             : 2;
+  cursor              : pointer;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.ss-hidden {
+  display: none;
+}
+
+.ss-container:hover .ss-scroll {
+  opacity: 1;
+}
+
+.ss-grabbed {
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}

@@ -11,7 +11,10 @@
 
 .timeline {
   border-left: 3px solid $mystic;
-  margin-left: 5rem;
+  margin-left: 3rem;
+  @include breakpoint(medium) {
+    margin-left: 12rem;
+  }
 }
 
 .timeline-year {
@@ -159,7 +162,9 @@
   @include breakpoint(medium) {
     padding-left: 2.5rem;
     &:before {
-      left: -84px;
+      left: -112px;
+      width: 70px;
+      height: 70px;
     }
     .timeline-company-line {
       display: block;
@@ -170,13 +175,16 @@
 
 .timeline-project {
   height: 7rem;
-  width: 30rem;
+  width: 25rem;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 1px 2px 4px $alto;
   margin: 1rem 3rem;
   cursor: pointer;
   @include transition(all .3s ease-in);
+  @include breakpoint(medium) {
+    width: 40rem;
+  }
 
   &:hover {
     background-color: $gallery;
@@ -226,7 +234,7 @@
     background-image: url("/assets/img/projects/startuphealth.png");
   }
   &.nils .timeline-projects-logo {
-    background-color: $white;
+    background-color: #ab1e27;
     background-image: url("/assets/img/projects/nils.png");
   }
 

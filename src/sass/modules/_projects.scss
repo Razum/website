@@ -7,6 +7,10 @@
   .page-header {
     color: $burntsienna;
   }
+
+  .page-article {
+    padding-right: 5rem;
+  }
 }
 
 .project-item {
@@ -18,7 +22,7 @@
   box-shadow: 3px 3px 3px $gallery;
   margin-bottom: 2rem;
 
-  &:hover{
+  &:hover {
     box-shadow: 3px 3px 10px $regentgray;
     .project-item-body {
       background-color: $gallery;
@@ -34,17 +38,17 @@
   @include transition(all .3s ease-in);
 }
 
-
-.project-item-title {
+.project-item-title a {
   font-size: 2.4rem;
   color: $fiord;
   padding: 2.5rem;
+  text-decoration: none;
 }
 
 .project-field-lbl {
   font-size: 1.3rem;
   margin: 0;
-  color: $fiord;
+  color: #98a2ac;
 }
 
 .project-item-data {
@@ -63,6 +67,7 @@
 .project-item-period {
   flex: 1.5;
 }
+
 .project-item-company {
   flex: 1;
 }
@@ -70,7 +75,6 @@
 .project-item-client {
   flex: 1;
 }
-
 
 .project-item-technologies {
   @extend %reset-list;
@@ -98,7 +102,6 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center center;
-
   flex: 1;
 }
 
@@ -108,7 +111,7 @@
     background-image: url("/assets/img/projects/pixo.png");
   }
   &.gracenote .project-item-logo {
-    background-color: $alabaster;
+    background-color: $alto;
     background-image: url("/assets/img/projects/gracenote.png");
   }
   &.pediaq .project-item-logo {
@@ -128,11 +131,20 @@
     background-image: url("/assets/img/projects/shtrafy.png");
   }
   &.startuphealth .project-item-logo {
-    background-color: #1380AE;
-    background-image: url("/assets/img/projects/startuphealth.png");
+    background-size: 100% 50%;
+    background-color: #1380ae;
+    background-image: linear-gradient(90deg,#ffcb0c 50%,transparent 0),linear-gradient(270deg,#10b79b 50%,transparent 0),linear-gradient(90deg,#14b8e2 50%,transparent 0),linear-gradient(270deg,#1380ae 50%,transparent 0);
+    background-position: 0 0, 0 0, 50% 100%, 100% 100%;
+    .project-item-logo-layer {
+      height: 100%;
+      background-image: url("/assets/img/projects/startuphealth.png");
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
   }
   &.nils .project-item-logo {
-    background-color: $white;
+    background-color: #ab1e27;
     background-image: url("/assets/img/projects/nils.png");
   }
   &.databeatomni .project-item-logo {
@@ -140,7 +152,7 @@
     background-image: url("/assets/img/projects/nils.png");
   }
   &.rds .project-item-logo {
-    background-color: $white;
+    background-color: #e46328;
     background-image: url("/assets/img/projects/rds_bar.png");
   }
   &.onu-website .project-item-logo {
@@ -153,7 +165,7 @@
   }
   &.blownaway .project-item-logo {
     background-color: $black;
-    background-image: url("/assets/img/projects/blownaway.png");
+    background-image: url("/assets/img/projects/blownaway_transparent.png");
   }
   &.ticketmaster .project-item-logo {
     background-color: #009CDE;
@@ -167,6 +179,16 @@
     background-color: $white;
     background-image: url("/assets/img/projects/ontestme.png");
   }
+
+  &.databeatomni .project-item-logo {
+    background-color: $white;
+    background-image: url("/assets/img/projects/databeatomni.png");
+  }
+
+  &.csssir .project-item-logo {
+    background-color: #e7b057;
+    background-image: url("/assets/img/projects/csssir.png");
+  }
 }
 
 .project-details-page {
@@ -179,6 +201,14 @@
   left: 0;
   overflow: hidden;
   padding: 1rem 3rem 1rem 7rem;
+  @include transition(all .3s ease-in);
+  @include transform(translateX(100%));
+  &.opened {
+    @include transform(translateX(0));
+  }
+}
+
+.project-details-body {
   @extend %flexbox;
   @include flex-direction(row);
 }
@@ -190,6 +220,12 @@
 .project-details {
   flex: 3;
 }
+
+.project-section {
+  padding: 1.5rem 0;
+  border-top: 1px solid $gallery;
+}
+
 .project-logo {
   width: 14rem;
   height: 14rem;
@@ -230,17 +266,17 @@
   }
 }
 
-.project-responsobilities {
-  border-bottom: 1px solid $gallery;
-  border-top: 1px solid $gallery;
-  margin: 0;
+.project-description {
+  margin-top: 1.5rem;
+}
 
+.project-responsobilities {
+  margin: 0;
 }
 
 .project-responsobilities-list {
   padding-left: 1.6rem;
 }
-
 
 .back-arrow {
   display: inline-block;
@@ -250,5 +286,6 @@
   font-size: 3rem;
   height: 2rem;
   color: $burntsienna;
+  cursor: pointer;
 }
 

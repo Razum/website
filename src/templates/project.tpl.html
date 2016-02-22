@@ -1,0 +1,22 @@
+<div class="project-logo-wrapper">
+    <div class="project-logo pixo"></div>
+</div>
+<div class="project-details">
+    <h1 class="project-title"><% this.title %></h1>
+    <p class="project-field-lbl">Project</p>
+    <div class="project-section project-description">
+        <p class="project-field-lbl">Description</p>
+        <p><% this.description %></p>
+    </div>
+    <div class="project-section project-responsobilities">
+        <p class="project-field-lbl">Responsobilities</p>
+        <p><% this.responsobilities %></p>
+    </div>
+    <ul class="project-section project-technologies">
+
+        <% for(var index in this.technologies) {%>
+            <li class="project-technology"><%this.technologies[index]%></li>
+        <%}%>
+    </ul>
+</div>
+<a class="back-arrow">&larr;</a>

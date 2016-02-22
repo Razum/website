@@ -1,11 +1,13 @@
 /**
  * Created by roman on 27.09.2015.
  */
+"use strict";
 import "../../sass/app.scss";
 import Router from './router.js';
-
-"use strict";
-
+import '../libs/simple-scrollbar.js';
+import _template from '../libs/tpl-engine.js';
+import projects from './projects.js';
+let project_tpl = require("../../templates/project.tpl.html");
 
 
 //router.navigate('/about');
@@ -25,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     router
         .add(/(.*)/, function(page) {
-            console.log(page);
             var mq = window.matchMedia( "(min-width: 1024px)" );
 
             if (page && ['about', 'skills', 'experience', 'projects'].some((name)=>page === name)) {
@@ -64,6 +65,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
             router.navigate("");
         }
 
+        if (target.tagName === "A" && target.classList.contains("show-project-details")) {
+            evt.preventDefault();
+            let project = target.dataset.project;
+            document.getElementById("project-details-body").innerHTML = _template(project_tpl, projects[project]);
+            document.getElementById("project-details-page").classList.add("opened");
+        }
+
+        if (target.tagName === "A" && target.classList.contains("back-arrow")) {
+            document.getElementById("project-details-page").classList.remove("opened");
+        }
+
 
         while (target.tagName != "BODY") {
             if (target.tagName === "LI" && target.classList.contains("skill-category")) {
@@ -87,13 +99,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function openItemInfo(pageName, id) {
-        console.warn(pageName);
         var xhr = new XMLHttpRequest();
         xhr.open('GET', pageName + ".html", true);
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById(id).innerHTML = xhr.responseText;
+                SimpleScrollbar.initEl(document.getElementById("page-article"));
             }
 
         }

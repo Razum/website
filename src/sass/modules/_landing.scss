@@ -116,6 +116,7 @@
   background-color: rgba(255, 255, 255, 1);
   height: 100%;
   padding: 2.5rem 2rem 4rem 3rem;
+  overflow: hidden;
   @include transform(translateY(100%));
   @include transition(transform .5s ease);
 }

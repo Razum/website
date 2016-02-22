@@ -15,7 +15,8 @@ module.exports = {
     entry: path.join(__dirname, "./src/js/app/app.js"),
     output: {
         path: path.join(__dirname, "/build/"),
-        filename: "app.min.js"
+        filename: "app.min.js",
+        sourceMapFilename: "app.min.js.map"
     },
     module: {
         loaders: [
@@ -34,9 +35,16 @@ module.exports = {
             {
                 test: /\.(svg|woff)$/,
                 loader: 'url-loader?limit=100000'
+            },
+
+            {
+                test: /\.html$/,
+                loader: "html"
             }
+
         ]
     },
+    //devtool: 'source-map',
     plugins: [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({}),
